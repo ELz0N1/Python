@@ -1,3 +1,6 @@
+import unittest
+
+
 def bits_count(number: int):
     count = 0
 
@@ -19,5 +22,30 @@ def bits_count(number: int):
     return count
 
 
-n = int(input())
-print(bits_count(n))
+class Tests(unittest.TestCase):
+    def test_positive(self):
+        tests = [
+            (0, 0),
+            (4, 1),
+            (7, 3),
+            (10, 2),
+            (127, 7),
+        ]
+
+        for number, expected in tests:
+            self.assertEqual(expected, bits_count(number))
+
+    def test_negative(self):
+        tests = [
+            (-1, 2),
+            (-4, 2),
+            (-69, 6),
+            (-123, 3),
+            (-127, 2),
+        ]
+
+        for number, expected in tests:
+            self.assertEqual(expected, bits_count(number))
+
+
+unittest.main()
