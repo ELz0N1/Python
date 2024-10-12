@@ -10,11 +10,11 @@ def bits_count(number: int):
             number >>= 1
     else:
         number = abs(number)
-        good_one = True
+        good_one = False
         while number:
             if number % 2:
-                good_one = False
-            elif not good_one:
+                good_one = True
+            elif good_one:
                 count += 1
             number >>= 1
         count += 2
@@ -30,6 +30,7 @@ class Tests(unittest.TestCase):
             (7, 3),
             (10, 2),
             (127, 7),
+            (2 ** 31 - 1, 31)
         ]
 
         for number, expected in tests:
@@ -42,6 +43,7 @@ class Tests(unittest.TestCase):
             (-69, 6),
             (-123, 3),
             (-127, 2),
+            (-2 ** 31, 2)
         ]
 
         for number, expected in tests:
