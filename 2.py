@@ -2,12 +2,11 @@ import unittest
 
 
 def my_zip(list1, list2):
-    result = []
-    i = 0
-    while i < len(list1) and i < len(list2):
-        result.append((list1[i], list2[i]))
-        i += 1
-    return result
+    # result = []
+    # for i in range(min(len(list1), len(list2))):
+    #     result.append((list1[i], list2[i]))
+
+    return [(list1[i], list2[i]) for i in range(min(len(list1), len(list2)))]
 
 
 class Tests(unittest.TestCase):
