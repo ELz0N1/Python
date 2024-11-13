@@ -12,11 +12,11 @@ def flatten(in_list):
     return new_list
 
 
-def flatten_with_depth(in_list, depth=None):
+def flatten_with_depth(in_list, depth=float("inf")):
     new_list = []
     for i in in_list:
-        if isinstance(i, list) and (depth is None or depth > 0):
-            new_list += flatten_with_depth(i, None if depth is None else depth - 1)
+        if isinstance(i, list) and depth > 0:
+            new_list += flatten_with_depth(i, depth - 1)
         else:
             new_list.append(i)
 
