@@ -1,12 +1,18 @@
 import unittest
 
 
+def fake_init(*args, **kwargs):
+    pass
+
+
 class Singleton:
     instance = None
 
     def __new__(cls, *args, **kwargs):
         if not cls.instance:
             cls.instance = object.__new__(cls)
+        else:
+            cls.__init__ = fake_init
         return cls.instance
 
 

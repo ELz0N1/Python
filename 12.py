@@ -1,9 +1,11 @@
 import unittest
+import functools
 
 
 def coroutine(f):
-    def wrapper():
-        g = f()
+    @functools.wraps(f)
+    def wrapper(*args, **kwargs):
+        g = f(*args, **kwargs)
         next(g)
         return g
 
